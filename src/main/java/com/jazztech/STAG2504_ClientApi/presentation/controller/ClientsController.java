@@ -4,9 +4,9 @@ import com.jazztech.STAG2504_ClientApi.applicationService.clientsService.CreateC
 import com.jazztech.STAG2504_ClientApi.applicationService.clientsService.SearchClient;
 import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.ApiClientException;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
-import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor

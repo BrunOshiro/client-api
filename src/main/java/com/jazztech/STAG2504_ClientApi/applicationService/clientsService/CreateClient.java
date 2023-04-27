@@ -12,6 +12,7 @@ import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
@@ -19,6 +20,7 @@ import java.time.LocalDate;
 @Service
 public class CreateClient {
     private final ClientMapper clientMapper;
+    @Autowired
     private final ViaCepApiClient viaCepApiClient;
     private final ClientsRepository clientsRepository;
 
