@@ -5,14 +5,15 @@ import com.jazztech.STAG2504_ClientApi.applicationService.clientsService.SearchC
 import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.ApiClientException;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1.0/clients")
+@Validated
 public class ClientsController {
-
     private final CreateClient createClient;
     private final SearchClient searchClient;
 
@@ -36,5 +37,4 @@ public class ClientsController {
     public List<ClientDto> searchClientByCpf(@PathVariable("cpf") String cpf) {
         return searchClient.getClientsByCpf(cpf);
     }
-
 }

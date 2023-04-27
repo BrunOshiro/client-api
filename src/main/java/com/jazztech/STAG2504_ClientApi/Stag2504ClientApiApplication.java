@@ -8,5 +8,4 @@ public class Stag2504ClientApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Stag2504ClientApiApplication.class, args);
 	}
-
 }

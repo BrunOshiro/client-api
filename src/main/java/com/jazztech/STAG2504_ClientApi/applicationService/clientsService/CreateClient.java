@@ -13,7 +13,6 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 
 @RequiredArgsConstructor
@@ -22,7 +21,6 @@ public class CreateClient {
     private final ClientMapper clientMapper;
     private final ViaCepApiClient viaCepApiClient;
     private final ClientsRepository clientsRepository;
-
 
     //Criação de cliente
     @Transactional
@@ -50,7 +48,6 @@ public class CreateClient {
         clientsRepository.save(entity);
 
         return clientMapper.domainEntityToDto(domainClient);
-
     }
 
     //Validação de dataNascimento
@@ -66,5 +63,4 @@ public class CreateClient {
             throw new ValidationException("CEP inválido");
         }
     }
-
 }
