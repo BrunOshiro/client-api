@@ -47,7 +47,7 @@ public class CreateClient {
                         .build())
                 .build();
         Client entity = clientMapper.domainEntityToEntity(domainClient);
-        entity = clientsRepository.save(entity);
+        clientsRepository.save(entity);
 
         return clientMapper.domainEntityToDto(domainClient);
 
