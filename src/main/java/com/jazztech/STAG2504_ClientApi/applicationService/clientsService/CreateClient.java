@@ -27,7 +27,6 @@ public class CreateClient {
     //Criação de cliente
     @Transactional
     public ClientDto addClient(ClientDto clientDto) throws ApiClientException {
-        //validateCpf(clientDto.getCpf());
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
 
@@ -53,14 +52,6 @@ public class CreateClient {
         return clientMapper.domainEntityToDto(domainClient);
 
     }
-
-    //Validação de CPF
-    /*
-    private void validateCpf(String cpf) {
-        if (!CPFValidator.isValid(cpf)) {
-            throw new ValidationException("CPF inválido");
-        }
-    }*/
 
     //Validação de dataNascimento
     private void validateDataNascimento(LocalDate dataNascimento) {
