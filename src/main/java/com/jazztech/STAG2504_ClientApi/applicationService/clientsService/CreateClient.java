@@ -4,7 +4,6 @@ import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.DomainClient;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
-import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.ApiClientException;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
@@ -27,11 +26,11 @@ public class CreateClient {
 
     //Criação de cliente
     @Transactional
-    public ClientDto addClient(ClientDto clientDto) throws ApiClientException {
+    public ClientDto addClient(ClientDto clientDto) {
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
 
-        AddressDto addressDto = viaCepApiClient.getAddressByCep(clientDto.addressDto().cep());
+        AddressDto addressDto = getAddressFromViaCep(clientDto.addressDto().cep());
         DomainClient domainClient;
         domainClient = DomainClient.builder()
                 .nome(clientDto.nome())
@@ -66,5 +65,11 @@ public class CreateClient {
         if(cep.length() != 8) {
             throw new ValidationException("CEP inválido");
         }
+    }
+
+    //Buscar endereço por CEP
+    private AddressDto getAddressFromViaCep(String cep) {
+        LOGGER.info("CEP consultado com sucesso");
+        return viaCepApiClient.getAddressByCep(cep);
     }
 }
