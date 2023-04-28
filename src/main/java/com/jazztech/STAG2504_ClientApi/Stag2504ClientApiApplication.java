@@ -1,11 +1,10 @@
 package com.jazztech.STAG2504_ClientApi;
 
-import com.jazztech.STAG2504_ClientApi.infrastructure.config.AppConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@Import(AppConfig.class)
+@EnableFeignClients
 @SpringBootApplication
 public class Stag2504ClientApiApplication {
 	public static void main(String[] args) {

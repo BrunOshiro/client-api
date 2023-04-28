@@ -9,18 +9,19 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ValidationException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @Service
 public class CreateClient {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CreateClient.class);
     private final ClientMapper clientMapper;
-    @Autowired
     private final ViaCepApiClient viaCepApiClient;
     private final ClientsRepository clientsRepository;
 
@@ -49,6 +50,7 @@ public class CreateClient {
         Client entity = clientMapper.domainEntityToEntity(domainClient);
         clientsRepository.save(entity);
 
+        LOGGER.info("Cliente cadastrado com sucesso");
         return clientMapper.domainEntityToDto(domainClient);
     }
 
