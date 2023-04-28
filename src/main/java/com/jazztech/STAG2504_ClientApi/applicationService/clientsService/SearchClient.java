@@ -1,17 +1,17 @@
 package com.jazztech.STAG2504_ClientApi.applicationService.clientsService;
 
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
+import org.apache.commons.lang3.StringUtils;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -19,7 +19,6 @@ public class SearchClient {
     private final ClientsRepository clientsRepository;
     private final ClientMapper clientMapper;
     private static final Logger LOGGER = LoggerFactory.getLogger(CreateClient.class);
-
 
     //Busca de cliente por Id
     @Transactional

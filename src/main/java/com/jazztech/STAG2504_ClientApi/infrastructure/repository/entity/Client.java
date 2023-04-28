@@ -1,10 +1,10 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity;
 
-import java.time.LocalDate;
-import jakarta.persistence.*;
+import org.hibernate.validator.constraints.br.CPF;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.br.CPF;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -144,5 +144,4 @@ public class Client{
         public void setEnderecoUf(String enderecoUf) {
                 this.enderecoUf = enderecoUf;
         }
-
 }

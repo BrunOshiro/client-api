@@ -7,6 +7,7 @@ import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class ClientsController {
     private final SearchClient searchClient;
 
     @PostMapping("/")
-    public ClientDto createClient(@RequestBody ClientDto clientDto) throws ApiClientException {
+    public ClientDto createClient(@RequestBody @Valid ClientDto clientDto) throws ApiClientException {
         createClient.addClient(clientDto);
         return clientDto;
     }
@@ -29,12 +30,12 @@ public class ClientsController {
     }
     
     @GetMapping("/{id}")
-    public ClientDto searchClientById(@PathVariable("id") Long id) {
+    public ClientDto searchClientById(@PathVariable("id") @Valid Long id) {
         return searchClient.getClientById(id);
     }
 
     @GetMapping("/{cpf}")
-    public List<ClientDto> searchClientByCpf(@PathVariable("cpf") String cpf) {
+    public List<ClientDto> searchClientByCpf(@PathVariable("cpf") @Valid String cpf) {
         return searchClient.getClientsByCpf(cpf);
     }
 }

@@ -1,20 +1,20 @@
 package com.jazztech.STAG2504_ClientApi.applicationService.clientsService;
 
-import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.DomainClient;
-import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
-import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
+import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
+import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
+import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import jakarta.transaction.Transactional;
-import jakarta.validation.ValidationException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import jakarta.validation.ValidationException;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.LoggerFactory;
 import java.time.LocalDate;
+import org.slf4j.Logger;
 
 @RequiredArgsConstructor
 @Service
@@ -29,7 +29,6 @@ public class CreateClient {
     public ClientDto addClient(ClientDto clientDto) {
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
-
         AddressDto addressDto = getAddressFromViaCep(clientDto.addressDto().cep());
         DomainClient domainClient;
         domainClient = DomainClient.builder()
