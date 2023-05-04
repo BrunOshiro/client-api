@@ -1,13 +1,15 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto;
 
 public record AddressDto (
+        // Variáveis com atributos conforme api do correio
         String cep,
-        Integer enderecoNumero,
-        String enderecoComplemento,
-        String enderecoRua,
-        String enderecoBairro,
-        String enderecoCidade,
-        String enderecoUf
-) {
-
-}
+            String logradouro,
+            String complemento,
+            String bairro,
+            String localidade,
+            String uf,
+            Integer ibge,
+            Integer gia,
+            Integer ddd,
+            Integer siafi
+    ) {}
