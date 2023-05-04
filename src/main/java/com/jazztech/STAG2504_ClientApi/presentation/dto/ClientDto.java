@@ -1,6 +1,5 @@
 package com.jazztech.STAG2504_ClientApi.presentation.dto;
 
-import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import java.time.LocalDate;
 
 public record ClientDto (
@@ -10,4 +9,10 @@ public record ClientDto (
         LocalDate dataNascimento,
         AddressDto addressDto
 
-) {}
+) {
+    public record AddressDto (
+            Integer enderecoNumero,
+            String enderecoComplemento,
+            String cep
+    ) {}
+}
