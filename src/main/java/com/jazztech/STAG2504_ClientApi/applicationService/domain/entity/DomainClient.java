@@ -2,10 +2,10 @@ package com.jazztech.STAG2504_ClientApi.applicationService.domain.entity;
 
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import com.jazztech.STAG2504_ClientApi.infrastructure.util.ValidationCustom;
-import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
-import lombok.Builder;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import lombok.Builder;
 
 public record DomainClient(
 

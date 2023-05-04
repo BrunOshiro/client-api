@@ -8,7 +8,6 @@ public record ClientDto (
         String cpf,
         LocalDate dataNascimento,
         AddressDto addressDto
-
 ) {
     public record AddressDto (
             Integer enderecoNumero,
