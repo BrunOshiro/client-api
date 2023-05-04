@@ -10,6 +10,11 @@ public record DomainClient(
         LocalDate dataNascimento,
         Address address
 ) {
+    public record Address(
+            Integer enderecoNumero,
+            String enderecoComplemento,
+            String cep
+            ) {}
     @Builder
     public DomainClient {
     }
