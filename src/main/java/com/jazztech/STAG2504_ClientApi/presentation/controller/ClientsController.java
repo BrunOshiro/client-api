@@ -6,8 +6,11 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.ApiClientExcept
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,9 +20,12 @@ import java.util.List;
 public class ClientsController {
     private final CreateClient createClient;
     private final SearchClient searchClient;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClientsController.class);
 
     @PostMapping("/")
+    @ResponseStatus(value = HttpStatus.CREATED)
     public ClientDto createClient(@RequestBody @Valid ClientDto clientDto) throws ApiClientException {
+        LOGGER.info(clientDto.toString());
         createClient.addClient(clientDto);
         return clientDto;
     }

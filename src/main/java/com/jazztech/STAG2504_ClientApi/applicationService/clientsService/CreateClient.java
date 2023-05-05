@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
 import java.time.LocalDate;
 import org.slf4j.Logger;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CreateClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(CreateClient.class);
     private final ClientMapper clientMapper;
@@ -26,7 +26,7 @@ public class CreateClient {
 
     //Criação de cliente
     @Transactional
-    public ClientDto addClient(ClientDto clientDto) {
+    public ClientDto addClient(DomainClient clientDto) {
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
         AddressDto addressDto = getAddressFromViaCep(clientDto.addressDto().cep());

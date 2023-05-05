@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import lombok.Builder;
 
+//Camada que recebe os dados do usuário(DTO) e trata para a camada de infraestrutura
 public record DomainClient(
 
         @NotBlank(message = "O campo nome é obrigatório")
