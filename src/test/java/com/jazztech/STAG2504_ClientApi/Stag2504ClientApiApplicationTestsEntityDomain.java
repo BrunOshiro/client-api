@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Stag2504DomainClientApiApplicationTestsEntity {
+class Stag2504ClientApiApplicationTestsEntityDomain {
 
 	@Test
 	void contextLoads() {

@@ -1,6 +1,6 @@
 package com.jazztech.STAG2504_ClientApi.applicationService.clientsService;
 
-import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.DomainClient;
+import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.ClientDomain;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
@@ -8,6 +8,7 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import jakarta.validation.ValidationException;
 import jakarta.transaction.Transactional;
@@ -26,14 +27,14 @@ public class CreateClient {
 
     //Criação de cliente
     @Transactional
-    public ClientDto addClient(DomainClient domainClient) {
-        final ClientEntity clientEntity = clientMapper.domainEntityToEntity(domainClient);
+    public ClientDto addClient(@Valid ClientDto clientDomain) {
+        final ClientEntity clientEntity = clientMapper.domainEntityToEntity(clientDomain);
         final String cep = clientEntity.
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
         AddressDto addressDto = getAddressFromViaCep(clientDto.addressDto().cep());
-        DomainClient domainClient;
-        domainClient = DomainClient.builder()
+        ClientDomain clientDomain;
+        clientDomain = ClientDomain.builder()
                 .nome(clientDto.nome())
                 .cpf(clientDto.cpf())
                 .dataNascimento(clientDto.dataNascimento())
@@ -47,11 +48,11 @@ public class CreateClient {
                         .enderecoUf(addressDto.enderecoUf())
                         .build())
                 .build();
-        ClientEntity entity = clientMapper.domainEntityToEntity(domainClient);
+        ClientEntity entity = clientMapper.domainEntityToEntity(clientDomain);
         clientsRepository.save(entity);
 
         LOGGER.info("Cliente cadastrado com sucesso");
-        return clientMapper.domainEntityToDto(domainClient);
+        return clientMapper.domainEntityToDto(clientDomain);
     }
 
     //Validação de dataNascimento

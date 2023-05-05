@@ -6,17 +6,16 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.br.CPF;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+//Dados que serão enviados para o banco de dados
 @Entity
 @Table(name = "CLIENTE")
 @Immutable
 public class ClientEntity {
         @Id
-        @Column(name = "CHAVE_CLIENTE")
         UUID id;
 
         @Column(name = "NOME")

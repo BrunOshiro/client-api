@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import lombok.Builder;
 
 //Camada que recebe os dados do usuário(DTO) e trata para a camada de infraestrutura
-public record DomainClient(
+public record ClientDomain(
 
         @NotBlank(message = "O campo nome é obrigatório")
         String nome,
@@ -22,7 +22,7 @@ public record DomainClient(
     }
 
     @Builder(toBuilder = true)
-    public DomainClient (
+    public ClientDomain(
             String nome,
             String cpf,
             LocalDate dataNascimento,
@@ -36,7 +36,7 @@ public record DomainClient(
     }
 
     //Método para atualizar o endereço adicionando campos conforme consulta do cep na api dos correios
-    public DomainClient updateAddressFromViaCepApi(AddressDto addressDto) {
+    public ClientDomain updateAddressFromViaCepApi(AddressDto addressDto) {
         return this.toBuilder()
                 .address(Address.builder()
                         .cep(this.address.cep())
