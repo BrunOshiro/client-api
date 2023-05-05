@@ -5,6 +5,7 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEn
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
@@ -22,7 +24,7 @@ public class SearchClient {
 
     //Busca de cliente por Id
     @Transactional
-    public ClientDto getClientById(Long id) {
+    public ClientDto getClientById(@Valid UUID id) {
         ClientEntity clientEntity = clientsRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
         LOGGER.info("Cliente consultado por id com sucesso");

@@ -14,6 +14,7 @@ import jakarta.validation.Valid;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import java.util.List;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @RestController
@@ -37,12 +38,12 @@ public class ClientsController {
     }
     
     @GetMapping("/{id}")
-    public ClientDto searchClientById(@PathVariable("id") @Valid Long id) {
+    public ClientDto searchClientById(@PathVariable("id") @Valid UUID id) {
         return searchClient.getClientById(id);
     }
 
-    @GetMapping("/{cpf}")
-    public List<ClientDto> searchClientByCpf(@PathVariable("cpf") @Valid String cpf) {
+    @GetMapping("/")
+    public List<ClientDto> searchClientByCpf(@RequestParam(value = "cpf", required = false) @Valid String cpf) {
         return searchClient.getClientsByCpf(cpf);
     }
 }
