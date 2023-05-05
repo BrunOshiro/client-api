@@ -1,11 +1,9 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -19,10 +17,8 @@ public class ClientEntity {
         UUID id;
 
         @Column(name = "NOME")
-        @Size(min = 5, max = 40, message = "O campo 'Nome' deve ter 5 a 40 caracteres")
         String nome;
 
-        @CPF
         @Column(name = "CPF")
         String cpf;
 

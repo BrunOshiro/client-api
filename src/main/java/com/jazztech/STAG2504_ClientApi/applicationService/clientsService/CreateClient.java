@@ -3,7 +3,7 @@ package com.jazztech.STAG2504_ClientApi.applicationService.clientsService;
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.ClientDomain;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
-import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
+import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.AddressDomain;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
@@ -38,7 +38,7 @@ public class CreateClient {
                 .nome(clientDto.nome())
                 .cpf(clientDto.cpf())
                 .dataNascimento(clientDto.dataNascimento())
-                .address(Address.builder()
+                .address(AddressDomain.builder()
                         .cep(addressDto.cep())
                         .enderecoNumero(addressDto.enderecoNumero())
                         .enderecoComplemento(addressDto.enderecoComplemento())
