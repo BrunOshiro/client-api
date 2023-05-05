@@ -2,7 +2,9 @@ package com.jazztech.STAG2504_ClientApi.presentation.controller;
 
 import com.jazztech.STAG2504_ClientApi.applicationService.clientsService.CreateClient;
 import com.jazztech.STAG2504_ClientApi.applicationService.clientsService.SearchClient;
+import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.AddressNotFound;
 import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.ApiClientException;
+import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.CPFAlreadyExistException;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +26,9 @@ public class ClientsController {
 
     @PostMapping("/")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ClientDto createClient(@RequestBody @Valid ClientDto clientDto) throws ApiClientException {
+    public ClientDto createClient(@RequestBody @Valid ClientDto clientDto) throws ApiClientException, CPFAlreadyExistException, AddressNotFound {
         LOGGER.info(clientDto.toString());
-        createClient.addClient(clientDto);
-        return clientDto;
+        return createClient.addClient(clientDto);
     }
 
     @GetMapping("/")
