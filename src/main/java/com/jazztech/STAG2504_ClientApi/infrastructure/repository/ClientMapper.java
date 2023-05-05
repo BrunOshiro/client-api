@@ -1,7 +1,7 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.repository;
 
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.DomainClient;
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import org.mapstruct.Mapper;
 import java.util.List;
@@ -12,11 +12,11 @@ public interface ClientMapper {
     ClientDto domainEntityToDto(DomainClient domainClient);
 
     //Mapeando entidade do domínio > entidade
-    Client domainEntityToEntity(DomainClient domainClient);
+    ClientEntity domainEntityToEntity(DomainClient domainClient);
 
     //Mapeamento entidade > dto
-    ClientDto entityToDto(Client client);
+    ClientDto entityToDto(ClientEntity clientEntity);
 
     //Mapeamento lista<entidade> > List<dto>
-    List<ClientDto> listEntityToListDto(List<Client> clients);
+    List<ClientDto> listEntityToListDto(List<ClientEntity> clientEntities);
 }

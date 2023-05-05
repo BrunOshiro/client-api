@@ -5,7 +5,7 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsReposito
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.Address;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.Client;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,9 @@ public class CreateClient {
 
     //Criação de cliente
     @Transactional
-    public ClientDto addClient(DomainClient clientDto) {
+    public ClientDto addClient(DomainClient domainClient) {
+        final ClientEntity clientEntity = clientMapper.domainEntityToEntity(domainClient);
+        final String cep = clientEntity.
         validateDataNascimento(clientDto.dataNascimento());
         validateCep(clientDto.addressDto().cep());
         AddressDto addressDto = getAddressFromViaCep(clientDto.addressDto().cep());
@@ -45,7 +47,7 @@ public class CreateClient {
                         .enderecoUf(addressDto.enderecoUf())
                         .build())
                 .build();
-        Client entity = clientMapper.domainEntityToEntity(domainClient);
+        ClientEntity entity = clientMapper.domainEntityToEntity(domainClient);
         clientsRepository.save(entity);
 
         LOGGER.info("Cliente cadastrado com sucesso");

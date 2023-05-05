@@ -2,7 +2,7 @@
 FROM openjdk
 
 # Diretório raíz do container
-WORKDIR /api/v1.0/clients
+WORKDIR /api/v1.0/clientEntities
 
 RUN src/main/java/com/jazztech/STAG2504_ClientApi/Stag2504ClientApiApplication.java
 
