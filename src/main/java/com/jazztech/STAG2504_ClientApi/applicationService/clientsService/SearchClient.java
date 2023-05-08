@@ -4,11 +4,11 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsReposito
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

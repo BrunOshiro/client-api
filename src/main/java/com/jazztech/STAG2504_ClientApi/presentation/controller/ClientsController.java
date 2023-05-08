@@ -32,7 +32,7 @@ public class ClientsController {
         return createClient.addClient(clientDto);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<ClientDto> searchAllClients() {
         return searchClient.getAllClients();
     }

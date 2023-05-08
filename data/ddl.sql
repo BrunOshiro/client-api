@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS CLIENT(
+CREATE TABLE IF NOT EXISTS CLIENTE(
         id uuid NOT NULL,
         nome varchar(300),
         cpf varchar(11) UNIQUE,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS CLIENT(
         PRIMARY KEY (id)
 );
 
-CREATE TABLE IF NOT EXISTS ADDRESS(
+CREATE TABLE IF NOT EXISTS ENDERECO(
         id uuid NOT NULL,
         rua varchar(256),
         bairro varchar(100),
@@ -23,6 +23,6 @@ CREATE TABLE IF NOT EXISTS ADDRESS(
         PRIMARY KEY (id)
 );
 
-ALTER TABLE CLIENT
+ALTER TABLE CLIENTE
 ADD CONSTRAINT fk_address_id
-FOREIGN KEY (address_id) REFERENCES ADDRESS (id);
+FOREIGN KEY (address_id) REFERENCES ENDERECO (id);
