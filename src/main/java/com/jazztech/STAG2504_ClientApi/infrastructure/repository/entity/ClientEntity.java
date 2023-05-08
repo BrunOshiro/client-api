@@ -16,25 +16,25 @@ public class ClientEntity {
         @Id
         UUID id;
 
-        @Column(name = "NOME")
+        @Column(name = "nome")
         String nome;
 
-        @Column(name = "CPF")
+        @Column(name = "cpf")
         String cpf;
 
-        @Column(name = "DATA_NASCIMENTO")
+        @Column(name = "data_nascimento")
         LocalDate dataNascimento;
 
         @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID")
+        @JoinColumn(name = "endereco_id", referencedColumnName = "ID")
         AddressEntity address;
 
         @CreationTimestamp
-        @Column(name = "DATA_CRIACAO")
+        @Column(name = "datacriacao")
         LocalDateTime creationDate;
 
         @UpdateTimestamp
-        @Column(name = "DATA_ALTERACAO")
+        @Column(name = "data_alteracao")
         LocalDateTime updateDate;
 
         private ClientEntity() {}

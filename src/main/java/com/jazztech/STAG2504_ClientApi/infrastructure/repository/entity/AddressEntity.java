@@ -17,25 +17,25 @@ import java.util.UUID;
 public class AddressEntity {
     @Id
     UUID id;
-    @Column(name = "ENDERECO_CEP")
+    @Column(name = "cep")
     String cep;
-    @Column(name = "ENDERECO_NUMERO")
+    @Column(name = "numero")
     Integer enderecoNumero;
-    @Column(name = "ENDERECO_COMPLEMENTO")
+    @Column(name = "complemento")
     String enderecoComplemento;
-    @Column(name = "ENDERECO_RUA")
+    @Column(name = "rua")
     String enderecoRua;
-    @Column(name = "ENDERECO_BAIRRO")
+    @Column(name = "bairro")
     String enderecoBairro;
-    @Column(name = "ENDERECO_CIDADE")
+    @Column(name = "cidade")
     String enderecoCidade;
-    @Column(name = "ENDERECO_UF")
+    @Column(name = "uf")
     String enderecoUf;
     @CreationTimestamp
-    @Column(name = "DATA_CRIACAO")
+    @Column(name = "data_criacao")
     LocalDateTime creationDate;
     @UpdateTimestamp
-    @Column(name = "DATA_ALTERACAO")
+    @Column(name = "data_alteracao")
     LocalDateTime updateDate;
 
     private AddressEntity() {}
