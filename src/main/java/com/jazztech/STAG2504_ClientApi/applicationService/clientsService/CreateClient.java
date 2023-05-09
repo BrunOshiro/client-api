@@ -31,31 +31,22 @@ public class CreateClient {
     //Criação de cliente
     @Transactional
     public ClientDtoResponse addClient(@Valid ClientDto clientDto) throws AddressNotFound, CPFAlreadyExistException {
-        System.out.println("entrada do cliente(dto) " + clientDto);
-
         // Transforma a entrada do cliente(dto) em domínio
         final ClientDomain clientDomain = clientMapper.dtoToDomain(clientDto);
-        System.out.println("Transforma a entrada do cliente(dto) em domínio " + clientDomain);
-
         // Pega o cep informado pelo usuário e transforma em domain
         final String cep = clientDomain.addressDomain().cep();
-        System.out.println("Pega o cep informado pelo usuário e transforma em domain " + cep);
 
         // Consulta o cep na api via Cep
         final AddressDto addressDto = getAddressFromViaCep(cep);
-        System.out.println("Consulta o cep na api via Cep " + addressDto);
 
         // Atualiza o endereço retornado pela api ViaCep no domain
         final ClientDomain clientAddressUpdated = clientDomain.updateAddressFromViaCepApi(addressDto);
-        System.out.println("Atualiza o endereço retornado pela api ViaCep no domain " + clientAddressUpdated);
 
         // Converte domain para entidade
         final ClientEntity clientEntity = clientMapper.domainToEntity(clientAddressUpdated);
-        System.out.println("Converte domain para entidade " + clientEntity);
 
         // Salva entidade no banco de dados
         final ClientEntity clientSaved = saveClient(clientEntity);
-        System.out.println("Salva entidade no banco de dados " + clientSaved);
 
         // Log de cliente cadastrado com sucesso
         LOGGER.info("Cliente cadastrado com sucesso");
