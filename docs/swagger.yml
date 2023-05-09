@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Swagger CLient - API 1.0.0
+  title: Swagger Client - API 1.0.0
   description: |-
     Esta api tem a finalidade de cadastrar clientes trazendo os dados do endereço conforme CEP preenchido pelo usuário.
     
