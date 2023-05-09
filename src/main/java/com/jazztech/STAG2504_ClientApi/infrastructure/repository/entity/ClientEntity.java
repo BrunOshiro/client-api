@@ -26,11 +26,11 @@ public class ClientEntity {
         LocalDate dataNascimento;
 
         @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "endereco_id", referencedColumnName = "ID")
+        @JoinColumn(name = "endereco_id", referencedColumnName = "id")
         AddressEntity address;
 
         @CreationTimestamp
-        @Column(name = "datacriacao")
+        @Column(name = "data_criacao")
         LocalDateTime creationDate;
 
         @UpdateTimestamp

@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS ENDERECO(
         rua varchar(256),
         bairro varchar(100),
         uf varchar(2),
-        cidade varchar(100)
+        cidade varchar(100),
         numero integer,
         complemento varchar(256),
         cep varchar(9),
@@ -25,4 +25,4 @@ CREATE TABLE IF NOT EXISTS ENDERECO(
 
 ALTER TABLE CLIENTE
 ADD CONSTRAINT fk_address_id
-FOREIGN KEY (address_id) REFERENCES ENDERECO (id);
+FOREIGN KEY (endereco_id) REFERENCES ENDERECO (id);
