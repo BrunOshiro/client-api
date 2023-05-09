@@ -11,7 +11,7 @@ public record AddressDomain(
         @NotBlank(message = "O campo 'CEP' não pode estar em branco")
         String cep,
         @NotBlank(message = "O campo 'Número' não pode estar em branco (caso não possua número informar: 0)")
-        @Size(min = 1, max = 8, message = "O campo 'Número' deve estar entre 1 e 8 caracteres")
+        @Size(min = 1, max = 100000, message = "O campo 'Número' deve estar entre 1 e 8 caracteres")
         Integer enderecoNumero,
         @Size(min = 0, max = 40, message = "O campo 'Complemento' possui limite 40 caracteres")
         String enderecoComplemento,
