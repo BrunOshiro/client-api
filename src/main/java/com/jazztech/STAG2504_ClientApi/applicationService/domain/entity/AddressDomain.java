@@ -15,17 +15,17 @@ public record AddressDomain(
         Integer enderecoNumero,
         @Size(min = 0, max = 40, message = "O campo 'Complemento' possui limite 40 caracteres")
         String enderecoComplemento,
-        @NotBlank(message = "O campo rua deve ser preenchido")
-        @Size(min = 3, max = 30, message = "O campo 'Rua' possui limite 30 caracteres")
+        //@NotBlank(message = "O campo rua deve ser preenchido")
+        //@Size(min = 3, max = 30, message = "O campo 'Rua' possui limite 30 caracteres")
         String enderecoRua,
-        @NotBlank(message = "O campo 'Bairro' não pode estar em branco")
-        @Size(min = 3, max = 30, message = "O campo 'Bairro' possui limite 30 caracteres")
+        //@NotBlank(message = "O campo 'Bairro' não pode estar em branco")
+        //@Size(min = 3, max = 30, message = "O campo 'Bairro' possui limite 30 caracteres")
         String enderecoBairro,
-        @NotBlank(message = "O campo 'Cidade' não pode estar em branco")
-        @Size(min = 3, max = 30, message = "O campo 'Cidade' possui limite 30 caracteres")
+        //@NotBlank(message = "O campo 'Cidade' não pode estar em branco")
+        //@Size(min = 3, max = 30, message = "O campo 'Cidade' possui limite 30 caracteres")
         String enderecoCidade,
-        @NotBlank(message = "O endereço não pode estar em branco")
-        @Size(min = 2, max = 2, message = "O campo 'UF' possui limite 2 caracteres. Deve ser preenchida apenas a sigla do estado.")
+        //@NotBlank(message = "O endereço não pode estar em branco")
+        //@Size(min = 2, max = 2, message = "O campo 'UF' possui limite 2 caracteres. Deve ser preenchida apenas a sigla do estado.")
         String enderecoUf
 ) {
     @Builder

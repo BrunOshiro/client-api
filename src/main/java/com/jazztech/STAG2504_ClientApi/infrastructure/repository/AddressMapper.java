@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
     //Mapeando dto para entidade
-    AddressDomain toEntity(AddressDto addressDto);
+    AddressDomain domainToDto(AddressDto addressDto);
     //Mapeando entidade para dto
-    AddressDto toDto(AddressDomain addressDomainEntity);
+    AddressDto dtoToEntity(AddressDomain addressDomainEntity);
 }
