@@ -4,6 +4,7 @@ import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsReposito
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
+import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDtoResponse;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 import jakarta.persistence.EntityNotFoundException;
@@ -24,7 +25,7 @@ public class SearchClient {
 
     //Busca de cliente por Id
     @Transactional
-    public ClientDto getClientById(@Valid UUID id) {
+    public ClientDtoResponse getClientById(@Valid UUID id) {
         ClientEntity clientEntity = clientsRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cliente não encontrado"));
         LOGGER.info("Cliente consultado por id com sucesso");
@@ -33,7 +34,7 @@ public class SearchClient {
 
     //Busca de clientes por CPF (Como na Jazz temos clientes)
     @Transactional
-    public List<ClientDto> getClientsByCpf(String cpf) {
+    public List<ClientDtoResponse> getClientsByCpf(String cpf) {
         List<ClientEntity> clientEntities = StringUtils.isBlank(cpf) ?
                 clientsRepository.findAll(): clientsRepository.findByCpf(cpf);
         LOGGER.info("Cliente consultado por CPF com sucesso");
@@ -42,7 +43,7 @@ public class SearchClient {
 
     //Buscar todos os clientes
     @Transactional
-    public List<ClientDto> getAllClients() {
+    public List<ClientDtoResponse> getAllClients() {
         List<ClientEntity> clientEntities = clientsRepository.findAll();
         LOGGER.info("Clientes listados com sucesso");
         return clientMapper.listEntityToListDto(clientEntities);

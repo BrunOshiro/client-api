@@ -29,5 +29,5 @@ public interface ClientMapper {
     ClientDtoResponse.AddressDtoResponse entityToDto(AddressEntity addressEntity);
 
     //Mapeamento lista<entidade> > List<dto>
-    List<ClientDto> listEntityToListDto(List<ClientEntity> clientEntities);
+    List<ClientDtoResponse> listEntityToListDto(List<ClientEntity> clientEntities);
 }

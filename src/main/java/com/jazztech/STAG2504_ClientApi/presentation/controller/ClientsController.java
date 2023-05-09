@@ -34,17 +34,17 @@ public class ClientsController {
     }
 
     @GetMapping
-    public List<ClientDto> searchAllClients() {
+    public List<ClientDtoResponse> searchAllClients() {
         return searchClient.getAllClients();
     }
     
     @GetMapping("/{id}")
-    public ClientDto searchClientById(@PathVariable("id") @Valid UUID id) {
+    public ClientDtoResponse searchClientById(@PathVariable("id") @Valid UUID id) {
         return searchClient.getClientById(id);
     }
 
     @GetMapping("/")
-    public List<ClientDto> searchClientByCpf(@RequestParam(value = "cpf", required = false) @Valid String cpf) {
+    public List<ClientDtoResponse> searchClientByCpf(@RequestParam(value = "cpf", required = false) @Valid String cpf) {
         return searchClient.getClientsByCpf(cpf);
     }
 }
