@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS CLIENTE(
         id uuid NOT NULL,
-        nome varchar(300),
+        nome varchar(100),
         cpf varchar(11) UNIQUE,
         data_nascimento date,
         endereco_id uuid unique,
@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS CLIENTE(
 
 CREATE TABLE IF NOT EXISTS ENDERECO(
         id uuid NOT NULL,
-        rua varchar(256),
-        bairro varchar(100),
+        rua varchar(30),
+        bairro varchar(30),
         uf varchar(2),
-        cidade varchar(100),
-        numero integer,
-        complemento varchar(256),
+        cidade varchar(30),
+        numero integer(8),
+        complemento varchar(40),
         cep varchar(9),
         data_criacao timestamp,
         data_alteracao timestamp,

@@ -12,7 +12,7 @@ import lombok.Builder;
 public record ClientDomain(
 
         @NotBlank(message = "O campo nome é obrigatório")
-        @Size(min = 5, max = 40, message = "O campo 'Nome' deve ter 5 a 40 caracteres")
+        @Size(min = 5, max = 100, message = "O campo 'Nome' deve ter no mínimo 5 caracteres")
         String nome,
         @CPF(message = "CPF informado inválido")
         String cpf,
