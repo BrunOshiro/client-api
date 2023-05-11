@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS ENDERECO(
         bairro varchar(30),
         uf varchar(2),
         cidade varchar(30),
-        numero integer(8),
+        numero integer,
         complemento varchar(40),
         cep varchar(9),
         data_criacao timestamp,
