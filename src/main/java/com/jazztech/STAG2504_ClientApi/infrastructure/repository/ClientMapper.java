@@ -9,10 +9,8 @@ import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDtoResponse;
 import jakarta.validation.Valid;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
 import java.util.List;
 
-//@Mapper(componentModel = "spring", uses = AddressMapper.class)
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
     //Mapeando domínio > dto
@@ -22,7 +20,7 @@ public interface ClientMapper {
     ClientEntity domainToEntity(@Valid ClientDomain clientDomain);
 
     //Mapeando dto > domínio
-    @Mapping(source = "address", target = "addressDomain")
+    @Mapping(source = "address", target = "addressDomain") //escrito nesse formato porque não estava mapeando automaticamente a ClientDto.Address
     ClientDomain dtoToDomain(@Valid ClientDto clientDto);
     AddressDomain dtoToAddressDomain(@Valid ClientDto.Address addressDto);
 
