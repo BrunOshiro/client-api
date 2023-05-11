@@ -11,7 +11,7 @@ public record ClientDtoResponse(
         String nome,
         String cpf,
         LocalDate dataNascimento,
-        AddressDtoResponse address,
+        AddressDtoResponse addressDtoResponse,
         LocalDateTime creationDate,
         LocalDateTime updateDate
 ) {

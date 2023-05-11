@@ -27,7 +27,7 @@ public class ClientEntity {
 
         @OneToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-        AddressEntity address;
+        AddressEntity addressEntity;
 
         @CreationTimestamp
         @Column(name = "data_criacao")
@@ -43,13 +43,13 @@ public class ClientEntity {
                 String nome,
                 String cpf,
                 LocalDate dataNascimento,
-                AddressEntity address
+                AddressEntity addressEntity
         ) {
                 this.id = UUID.randomUUID();
                 this.nome = nome;
                 this.cpf = cpf;
                 this.dataNascimento = dataNascimento;
-                this.address = address;
+                this.addressEntity = addressEntity;
         }
 
         public UUID getId() {
@@ -68,8 +68,8 @@ public class ClientEntity {
                 return dataNascimento;
         }
 
-        public AddressEntity getAddress() {
-                return address;
+        public AddressEntity getAddressEntity() {
+                return addressEntity;
         }
 
         public LocalDateTime getCreationDate() {

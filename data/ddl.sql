@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS CLIENTE(
 
 CREATE TABLE IF NOT EXISTS ENDERECO(
         id uuid NOT NULL,
-        rua varchar(30),
-        bairro varchar(30),
+        rua varchar(100),
+        bairro varchar(100),
         uf varchar(2),
-        cidade varchar(30),
+        cidade varchar(100),
         numero integer,
-        complemento varchar(40),
+        complemento varchar(100),
         cep varchar(9),
         data_criacao timestamp,
         data_alteracao timestamp,

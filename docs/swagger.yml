@@ -659,7 +659,7 @@ components:
           type: string
           example: '94301'
       xml:
-        name: address
+        name: addressDtoResponse
     Category:
       type: object
       properties:

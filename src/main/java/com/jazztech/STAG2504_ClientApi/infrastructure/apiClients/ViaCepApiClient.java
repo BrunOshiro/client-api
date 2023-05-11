@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 
 @Component
-@FeignClient(name = "viacep", url = "${url.viacep.host}")
+@FeignClient(name = "viacep", url = "https://viacep.com.br")//"${url.viacep.host}")
 public interface ViaCepApiClient {
     @GetMapping("/ws/{cep}/json/")
     AddressDto getAddressByCep(@PathVariable("cep") String cep);
