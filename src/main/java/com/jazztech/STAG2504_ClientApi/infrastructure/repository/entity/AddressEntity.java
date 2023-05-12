@@ -1,14 +1,14 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.annotations.Immutable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.UpdateTimestamp;
 
 //Dados que serão enviados para o banco de dados
 @Entity
@@ -38,7 +38,8 @@ public class AddressEntity {
     @Column(name = "data_alteracao")
     LocalDateTime updateDate;
 
-    private AddressEntity() {}
+    private AddressEntity() {
+    }
 
     public AddressEntity(
             String cep,

@@ -1,13 +1,14 @@
 package com.jazztech.STAG2504_ClientApi.infrastructure.util;
 
-import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import java.util.Set;
 
 public class ValidationCustom {
-    private ValidationCustom() {}
+    private ValidationCustom() {
+    }
 
     public static <T> T validator(T t) {
         final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();

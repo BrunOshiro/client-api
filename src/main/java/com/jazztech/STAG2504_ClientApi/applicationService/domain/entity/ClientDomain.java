@@ -2,11 +2,11 @@ package com.jazztech.STAG2504_ClientApi.applicationService.domain.entity;
 
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
 import com.jazztech.STAG2504_ClientApi.infrastructure.util.ValidationCustom;
-import jakarta.validation.constraints.Size;
-import org.hibernate.validator.constraints.br.CPF;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import lombok.Builder;
+import org.hibernate.validator.constraints.br.CPF;
 
 //Camada que recebe os dados do usuário(DTO) e trata para a camada de infraestrutura
 public record ClientDomain(
@@ -19,10 +19,6 @@ public record ClientDomain(
         LocalDate dataNascimento,
         AddressDomain addressDomain
 ) {
-    private static String formatCpf(String cpf) {
-        return cpf.replaceAll("[-.]","");
-    }
-
     @Builder(toBuilder = true)
     public ClientDomain(
             String nome,
@@ -35,6 +31,10 @@ public record ClientDomain(
         this.dataNascimento = dataNascimento;
         this.addressDomain = addressDomain;
         ValidationCustom.validator(this);
+    }
+
+    private static String formatCpf(String cpf) {
+        return cpf.replaceAll("[-.]", "");
     }
 
     //Método para atualizar o endereço adicionando campos conforme consulta do cep na api dos correios

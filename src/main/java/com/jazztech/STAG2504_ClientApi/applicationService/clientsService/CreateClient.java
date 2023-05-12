@@ -1,24 +1,24 @@
 package com.jazztech.STAG2504_ClientApi.applicationService.clientsService;
 
 import com.jazztech.STAG2504_ClientApi.applicationService.domain.entity.ClientDomain;
-import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.AddressNotFound;
-import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.CPFAlreadyExistException;
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.ViaCepApiClient;
 import com.jazztech.STAG2504_ClientApi.infrastructure.apiClients.dto.AddressDto;
-import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
+import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.AddressNotFound;
+import com.jazztech.STAG2504_ClientApi.infrastructure.exceptions.CPFAlreadyExistException;
 import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientMapper;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.ClientsRepository;
+import com.jazztech.STAG2504_ClientApi.infrastructure.repository.entity.ClientEntity;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDto;
 import com.jazztech.STAG2504_ClientApi.presentation.dto.ClientDtoResponse;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
+import java.time.LocalDate;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import jakarta.validation.ValidationException;
-import jakarta.validation.Valid;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import org.slf4j.LoggerFactory;
-import java.time.LocalDate;
-import org.slf4j.Logger;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +33,7 @@ public class CreateClient {
     public ClientDtoResponse addClient(@Valid ClientDto clientDto) throws AddressNotFound, CPFAlreadyExistException {
         // Transforma a entrada do cliente(dto) em domínio
         final ClientDomain clientDomain = clientMapper.dtoToDomain(clientDto);
+
         // Pega o cep informado pelo usuário e transforma em domain
         final String cep = clientDomain.addressDomain().cep();
 

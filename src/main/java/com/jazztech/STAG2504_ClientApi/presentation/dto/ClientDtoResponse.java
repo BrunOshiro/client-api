@@ -16,7 +16,7 @@ public record ClientDtoResponse(
         LocalDateTime updateDate
 ) {
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public record AddressDtoResponse (
+    public record AddressDtoResponse(
             UUID id,
             String cep,
             Integer enderecoNumero,
@@ -27,5 +27,6 @@ public record ClientDtoResponse(
             String enderecoUf,
             LocalDateTime creationDate,
             LocalDateTime updateDate
-    ) {}
+    ) {
+    }
 }
