@@ -1,7 +1,7 @@
 services:
   postgres:
-    image: postgres
-    container_name: postgres
+    image: postgres-client
+    container_name: client-api
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: senha123
@@ -12,4 +12,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 9000:8080
+      - 9001:8080
