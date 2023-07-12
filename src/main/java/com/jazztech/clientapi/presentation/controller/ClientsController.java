@@ -33,7 +33,7 @@ public class ClientsController {
     private final CreateClient createClient;
     private final SearchClient searchClient;
 
-    @PostMapping("/")
+    @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public ClientDtoResponse createClient(@RequestBody @Valid ClientDto clientDto)
             throws ApiClientException, CPFAlreadyExistException, AddressNotFound {
