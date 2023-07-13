@@ -1,15 +1,31 @@
 services:
-  postgres:
-    image: postgres-client
-    container_name: client-api
+  postgres-client:
+    image: postgres
+    container_name: client
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: senha123
     ports:
       - "5431:5432"
-
-  adminer:
-    image: adminer
-    restart: always
+    networks:
+      - jazz-study-apis-network
+  clientapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 9001:8080
+      - "8084:8082"
+    networks:
+      - jazz-study-apis-network
+    depends_on:
+      - postgres-client
+    environment:
+      - POSTGRES_URL=jdbc:postgresql://postgres:5432/postgres
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=senha123
+
+networks:
+  jazz-study-apis-network:
+    external: true
+volumes:
+  postgres-data:
